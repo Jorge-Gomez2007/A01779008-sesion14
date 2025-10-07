@@ -1,8 +1,94 @@
+def bajaPaciente(pacientes):
+    id_paciente= validEntero(500,'Id del paciente a eliminar: ')
+    if id_paciente in pacientes:
+        imprimePaciente(pacientes,id_paciente)
+        respuesta=input('Deseas eliminar este regristro?S/N: ').strip().lower()
+        if(respuesta=='s'):
+            del pacientes[id_paciente]
+        print('Paciente con el Id: ',id_paciente,'eliminado')
+    else:
+        print('Ese ID no existe')
+    return pacientes
 
-def validEntero(numero,text):
+
+def imprimePaciente(pacientes,id_paciente):
+    print(pacientes[id_paciente])
+
+def cambioPaciente (pacientes):
+    id_paciente= validEntero(500,'Id del paciente a editar: ')
+    if id_paciente in pacientes:
+        imprimePaciente(pacientes,id_paciente)
+        print('1. Datos personales')
+        print('2.Signos vitales')
+        print('3. Datos especiales')
+        print('4. Hospital')
+        print('5.Notas')
+        seccion=validEntero(5,'Que seccion deseas editar: ')
+
+        match seccion:
+            case 1:
+                print('Nombre')
+                print('Edad')
+                print('Sexo')
+                elemento=validEntero(3,'Que elemento deseas editar')
+                match elemento:
+                    case 1:
+                        nombre=input('Nombre: ')
+                        pacientes=[id_paciente]['Datos personales']['Nombre']=nombre                    
+                    case 2:
+                        edad=input('Edad: ')
+                        pacientes=[id_paciente]['Datos personales']['Edad']=edad
+                    case 3:
+                        sexo=input('Sexo: ')
+                        pacientes=[id_paciente]['Datos personales']['Sexo']=sexo
+            
+            case 2:
+                print('Peso')
+                print('Altura')
+                print('Sistolica')
+                print('Ditolica')
+                elemento=validEntero(4,'Que elemento deseas editar')
+                match elemento:
+                    case 1:
+                        peso=input('Peso: ')
+                        pacientes=[id_paciente]['Datos personales']['Nombre']=nombre                    
+                    case 2:
+                        edad=input('Edad: ')
+                        pacientes=[id_paciente]['Datos personales']['Edad']=edad
+                    case 3:
+                        sexo=input('Sexo: ')
+                        pacientes=[id_paciente]['Datos personales']['Sexo']=sexo
+                    case 4:
+            
+            case 3:
+                print('Alegia')
+                print('Religion')
+                print('Sangre')
+               
+            case 4:
+                print('Medico')
+                print('Enfernmeros')
+                print('Guardias')
+                print('Sala de opereciones')
+               
+            case 5:
+                print('Notas')
+                
+
+
+
+    else:
+        print('Ese ID no existe')
+    return pacientes
+
+
+
+
+
+def validEntero(numero,texto):
     while True:
         try:
-            numero=int(input('texto'))
+            opcion=int(input('texto'))
             if (opcion>0 and opcion<= numero):
                 break
             else:
@@ -82,11 +168,11 @@ while True:
     if opcion==1:
         pacientes=altaPaciente(pacientes)
     elif opcion==2:
-        bajaPaceinte(pacientes)
+        bajaPaciente(pacientes)
     elif opcion==3:
-        cambioPaceinte(pacientes)
+        cambioPaciente(pacientes)
     elif opcion==4:
-        expedientePaceinte(pacientes)
+        expedientePaciente(pacientes)
     else:
         break
 
